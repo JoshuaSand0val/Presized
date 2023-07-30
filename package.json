@@ -1,0 +1,33 @@
+{
+	"name": "presized",
+	"version": "0.0.0",
+	"private": true,
+	"description": "A collection of resizing tools written in Sass (SCSS).",
+	"keywords": [
+		"Presized",
+		"CSS resizing",
+		"CSS breakpoints",
+		"CSS",
+		"SCSS",
+		"Sass"
+	],
+	"homepage": "https://github.com/JoshuaSand0val/Presized#readme",
+	"license": "MIT",
+	"author": "Joshua Elijah Sandoval",
+	"files": [
+		"scss",
+		"_index.scss",
+		"CHANGELOG.md",
+		"LICENSE",
+		"README.md"
+	],
+	"main": "scss/_index.scss",
+	"style": "scss/_index.scss",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/JoshuaSand0val/Presized.git"
+	},
+	"dependencies": {
+		"sass": "^1.64.1"
+	}
+}
