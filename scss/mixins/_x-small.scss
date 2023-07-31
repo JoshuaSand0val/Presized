@@ -8,7 +8,7 @@ $_container: string.unique-id();
 
 @mixin x-small {
 	@media (max-width: $breakpoint-x-small) {
-		@at-root :where(%#{$_container}) & {
+		@at-root :where(%#{$_container}) #{&} {
 			@content;
 		}
 	}
