@@ -1,9 +1,9 @@
-// Scale: Responsive "rem" unit value using min and max ratios.
+// Modular Scale: Responsive "rem" unit value using min and max ratios.
 
 @use "sass:math" as math;
 @use "../variables/" as *;
 
-@function scale($number) {
+@function modular-scale($number) {
 	// Calculate $min and $max ratios:
 	$min: math.pow($min-ratio, $number);
 	$max: math.pow($max-ratio, $number);
