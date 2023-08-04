@@ -1,18 +1,7 @@
-// X-Small: Query container for extra small content.
+// Extra Small: Extra small scaling.
 
-@use "sass:meta" as meta;
-@use "sass:string" as string;
-@use "../variables/defaults" as *;
-
-$_container: string.unique-id();
+@use "../functions/" as *;
 
 @mixin x-small {
-	@media (max-width: $breakpoint-x-small) {
-		@at-root :where(%#{$_container}) #{&} {
-			@content;
-		}
-	}
-	@if not meta.content-exists() {
-		@extend %#{$_container} !optional;
-	}
+	font-size: modular-scale(-2);
 }

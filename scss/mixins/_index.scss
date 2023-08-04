@@ -1,2 +1,9 @@
 // Mixins: All sizing mixins forwarded.
+@forward "large";
+@forward "medium";
+@forward "small";
+@forward "x-large";
 @forward "x-small";
+@forward "xx-large";
+@forward "xx-small";
+@forward "xxx-large";

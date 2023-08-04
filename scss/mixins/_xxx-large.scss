@@ -1,0 +1,7 @@
+// Extra Large (x3): Extra, extra, extra large scaling.
+
+@use "../functions/" as *;
+
+@mixin xxx-large {
+	font-size: modular-scale(4);
+}
