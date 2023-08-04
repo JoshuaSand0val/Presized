@@ -8,19 +8,13 @@
 	$min: math.pow($min-ratio, $number);
 	$max: math.pow($max-ratio, $number);
 
-	// Calculate $start and $end sizes:
+	// Calculate $start size:
 	$start: 1rem * $min;
-	$end: 1rem * $max;
-
-	// Divide $breakpoint by 1rem (16px):
-	$breakpoint: math.div($breakpoint-xxl, 16px);
 
 	// Calculate container width $percentage:
-	$percentage: calc(100cqw / $breakpoint);
+	$percentage: calc(100cqw / math.div($breakpoint-xxl, 16px));
+	$percentage: min($percentage, $breakpoint-xxl);
 
-	// Calculate font-size range:
-	$range: calc($start + ($max - $min) * $percentage);
-
-	// Return responsive font-size:
-	@return min($range, $end);
+	// Return responsive font-size range:
+	@return calc($start + ($max - $min) * $percentage);
 }
