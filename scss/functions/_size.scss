@@ -1,0 +1,26 @@
+// Size: Responsive "rem" unit value using min and max ratios.
+
+@use "sass:math" as math;
+@use "../variables/" as *;
+
+@function size($number) {
+	// Calculate $min and $max ratios:
+	$min: math.pow($min-ratio, $number);
+	$max: math.pow($max-ratio, $number);
+
+	// Calculate $start and $end sizes:
+	$start: 1rem * $min;
+	$end: 1rem * $max;
+
+	// Divide $breakpoint by 1rem (16px):
+	$breakpoint: math.div($breakpoint-xxl, 16px);
+
+	// Calculate container width $percentage:
+	$percentage: calc(100cqw / $breakpoint);
+
+	// Calculate font-size range:
+	$range: calc($start + ($max - $min) * $percentage);
+
+	// Return responsive font-size:
+	@return min($range, $end);
+}
