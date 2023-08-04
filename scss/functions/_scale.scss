@@ -1,9 +1,9 @@
-// Size: Responsive "rem" unit value using min and max ratios.
+// Scale: Responsive "rem" unit value using min and max ratios.
 
 @use "sass:math" as math;
 @use "../variables/" as *;
 
-@function size($number) {
+@function scale($number) {
 	// Calculate $min and $max ratios:
 	$min: math.pow($min-ratio, $number);
 	$max: math.pow($max-ratio, $number);
@@ -12,8 +12,11 @@
 	$start: 1rem * $min;
 
 	// Calculate container width $percentage:
-	$percentage: calc(100cqw / math.div($breakpoint-xxl, 16px));
-	$percentage: min($percentage, $breakpoint-xxl);
+	$percentage: calc(100cqw / math.div($breakpoint-xxl, 1px));
+	$percentage: min($percentage, 1px);
+
+	// Multiply $percentage by 1rem (16px):
+	$percentage: calc($percentage * 16);
 
 	// Return responsive font-size range:
 	@return calc($start + ($max - $min) * $percentage);
