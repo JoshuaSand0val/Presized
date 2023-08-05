@@ -1,0 +1,17 @@
+// Functional: Global variables based on a function.
+
+@use "../functions/" as *;
+
+// Absolute Scale Values:
+$xx-small: scale(-3);
+$x-small: scale(-2);
+$small: scale(-1);
+$medium: scale(0);
+$large: scale(1);
+$x-large: scale(2);
+$xx-large: scale(3);
+$xxx-large: scale(4);
+
+// Relative Size Values:
+$smaller: size(-1);
+$larger: size(1);
