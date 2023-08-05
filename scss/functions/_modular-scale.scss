@@ -4,20 +4,22 @@
 @use "../variables/" as *;
 
 @function modular-scale($number) {
-	// Calculate $min and $max ratios:
-	$min: math.pow($min-ratio, $number);
-	$max: math.pow($max-ratio, $number);
+	// Calculate $start and $end values:
+	$start: math.pow($min-ratio, $number) * 1rem;
+	$end: math.pow($max-ratio, $number) * 1rem;
 
-	// Calculate $start size:
-	$start: 1rem * $min;
+	// Limit $end size for legibility:
+	$end: math.max($end, 0.625rem);
 
-	// Calculate container width $percentage:
-	$percentage: calc(100cqw / math.div($breakpoint-xxl, 1px));
-	$percentage: min($percentage, 1px);
+	// Calculate $difference value:
+	$difference: $end - $start;
 
-	// Multiply $percentage by 1rem (16px):
-	$percentage: calc($percentage * 16);
+	// Calculate $modifier value:
+	$modifier: math.div(100cqw, math.div($breakpoint-xxl, $difference));
 
 	// Return responsive font-size range:
-	@return calc($start + ($max - $min) * $percentage);
+	@return if($end > $start,
+		min($start + $modifier, $end),
+		max($start + $modifier, $end)
+	);
 }
