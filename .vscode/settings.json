@@ -1,5 +1,12 @@
 {
 	"editor.detectIndentation": false,
 	"editor.insertSpaces": false,
-	"editor.tabSize": 4
+	"editor.tabSize": 4,
+	"scss.validate": false,
+	"scss.lint.unknownAtRules": "ignore",
+	"scss.lint.validProperties": [
+		"container",
+		"container-name",
+		"container-type"
+	]
 }
