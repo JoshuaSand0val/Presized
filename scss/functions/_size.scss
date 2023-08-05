@@ -1,7 +1,7 @@
 // Size: Relative "em" unit value using static ratio.
 
 @use "sass:math" as math;
-@use "../variables/" as *;
+@use "../variables/defaults" as *;
 
 @function size($number) {
 	@return 1em * math.pow($ratio, $number);

@@ -1,7 +1,7 @@
 // Scale: Responsive "rem" unit value using min and max ratios.
 
 @use "sass:math" as math;
-@use "../variables/" as *;
+@use "../variables/defaults" as *;
 
 @function scale($number) {
 	// Calculate $start and $end values:
