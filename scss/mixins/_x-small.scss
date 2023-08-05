@@ -3,5 +3,5 @@
 @use "../functions/" as *;
 
 @mixin x-small {
-	font-size: modular-scale(-2);
+	font-size: scale(-2);
 }
