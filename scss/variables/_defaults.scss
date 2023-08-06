@@ -1,20 +1,20 @@
 // Defaults: Configurable global variable defaults.
 
 // Breakpoints:
-$breakpoint-xs: 10rem !default;
-$breakpoint-sm: 20rem !default;
-$breakpoint-md: 40rem !default;
-$breakpoint-lg: 60rem !default;
-$breakpoint-xl: 80rem !default;
-$breakpoint-xxl: 100rem !default;
+$breakpoint-x-small: 10rem !default;
+$breakpoint-small: 20rem !default;
+$breakpoint-medium: 40rem !default;
+$breakpoint-large: 60rem !default;
+$breakpoint-x-large: 80rem !default;
+$breakpoint-xx-large: 100rem !default;
 
 $breakpoints: (
-	"xs": $breakpoint-xs,
-	"sm": $breakpoint-sm,
-	"md": $breakpoint-md,
-	"lg": $breakpoint-lg,
-	"xl": $breakpoint-xl,
-	"xxl": $breakpoint-xxl
+	"x-small": $breakpoint-x-small,
+	"small": $breakpoint-small,
+	"medium": $breakpoint-medium,
+	"large": $breakpoint-large,
+	"x-large": $breakpoint-x-large,
+	"xx-large": $breakpoint-xx-large
 );
 
 // Modular Scale Ratios:
