@@ -8,9 +8,6 @@
 	$start: math.pow($min-ratio, $number) * 1rem;
 	$end: math.pow($max-ratio, $number) * 1rem;
 
-	// Limit $end size for legibility:
-	$end: math.max($end, 0.625rem);
-
 	// Calculate $difference value:
 	$difference: $end - $start;
 
@@ -18,8 +15,5 @@
 	$modifier: math.div(100cqw, math.div($breakpoint-xxl, $difference));
 
 	// Return responsive font-size range:
-	@return if($end > $start,
-		min($start + $modifier, $end),
-		max($start + $modifier, $end)
-	);
+	@return clamp(8px, $start + $modifier, math.max($start, $end));
 }
