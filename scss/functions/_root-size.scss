@@ -12,7 +12,7 @@
 	$difference: $end - $start;
 
 	// Calculate $modifier value:
-	$modifier: math.div(100cqw, math.div($breakpoint-xx-large, $difference));
+	$modifier: math.div(100cqw, math.div($breakpoint-xxx-large, $difference));
 
 	// Return responsive font-size range:
 	@return clamp(8px, $start + $modifier, math.max($start, $end));

@@ -6,7 +6,8 @@ $breakpoint-small: 20rem !default;
 $breakpoint-medium: 40rem !default;
 $breakpoint-large: 60rem !default;
 $breakpoint-x-large: 80rem !default;
-$breakpoint-xx-large: 100rem !default;
+$breakpoint-xx-large: 90rem !default;
+$breakpoint-xxx-large: 100rem !default;
 
 $breakpoints: (
 	"x-small": $breakpoint-x-small,
@@ -14,7 +15,8 @@ $breakpoints: (
 	"medium": $breakpoint-medium,
 	"large": $breakpoint-large,
 	"x-large": $breakpoint-x-large,
-	"xx-large": $breakpoint-xx-large
+	"xx-large": $breakpoint-xx-large,
+	"xxx-large": $breakpoint-xxx-large
 );
 
 // Modular Scale Ratios:
