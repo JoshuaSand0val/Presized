@@ -1,7 +1,0 @@
-// Extra Large: Extra large scaling.
-
-@use "../functions/" as *;
-
-@mixin x-large {
-	font-size: scale(2);
-}

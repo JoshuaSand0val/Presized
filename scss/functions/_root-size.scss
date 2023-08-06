@@ -1,9 +1,9 @@
-// Scale: Responsive "rem" unit value using min and max ratios.
+// Root Size: Absolute responsive "rem" unit value using min and max ratios.
 
 @use "sass:math" as math;
 @use "../variables/defaults" as *;
 
-@function scale($number) {
+@function root-size($number) {
 	// Calculate $start and $end values:
 	$start: math.pow($min-ratio, $number) * 1rem;
 	$end: math.pow($max-ratio, $number) * 1rem;

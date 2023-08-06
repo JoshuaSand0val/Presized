@@ -2,15 +2,15 @@
 
 @use "../functions/" as *;
 
-// Absolute Scale Values:
-$xx-small: scale(-3);
-$x-small: scale(-2);
-$small: scale(-1);
-$medium: scale(0);
-$large: scale(1);
-$x-large: scale(2);
-$xx-large: scale(3);
-$xxx-large: scale(4);
+// Absolute Size Values:
+$xx-small: root-size(-3);
+$x-small: root-size(-2);
+$small: root-size(-1);
+$medium: root-size(0);
+$large: root-size(1);
+$x-large: root-size(2);
+$xx-large: root-size(3);
+$xxx-large: root-size(4);
 
 // Relative Size Values:
 $smaller: size(-1);

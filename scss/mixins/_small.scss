@@ -1,7 +1,0 @@
-// Small: Small scaling.
-
-@use "../functions/" as *;
-
-@mixin small {
-	font-size: scale(-1);
-}

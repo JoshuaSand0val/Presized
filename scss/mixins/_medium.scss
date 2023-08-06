@@ -1,7 +1,0 @@
-// Medium: Medium scaling.
-
-@use "../functions/" as *;
-
-@mixin medium {
-	font-size: scale(0);
-}

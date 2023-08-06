@@ -1,7 +1,0 @@
-// Extra Small: Extra small scaling.
-
-@use "../functions/" as *;
-
-@mixin x-small {
-	font-size: scale(-2);
-}
