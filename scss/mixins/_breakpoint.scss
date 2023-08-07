@@ -1,0 +1,22 @@
+// Breakpoint: Encapsulates content inside scoped breakpoint container.
+
+@use "sass:map" as map;
+@use "../variables/defaults" as *;
+
+@mixin breakpoint($name) {
+	$width: map.get($breakpoints, $name);
+	@if $width {
+		@at-root %breakpoint-#{$name} #{&} {
+			@media (min-width: $width) {
+				@content;
+			}
+		}
+		@each $extender, $min-width in $breakpoints {
+			@at-root %breakpoint-#{$extender} {
+				@if $min-width >= $width {
+					@extend %breakpoint-#{$name};
+				}
+			}
+		}
+	}
+}
