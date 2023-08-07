@@ -27,9 +27,12 @@ $_previous-key: null;
 				$slope: math.div($end - $start, $max-breakpoint - $min-breakpoint);
 				$base: $start - $slope * $min-breakpoint;
 				$preferred: calc($base + (100vw * $slope));
-				
+
 				// Include responsive custom $property value:
-				#{--#{$property}}: clamp(8px, $preferred, math.max($start, $end));
+				#{--#{$property}}: if($end > $start,
+					max(8px, min($preferred, $end)),
+					max(8px, $preferred, $end)
+				);
 			}
 		}
 		// Extend the previous container:
