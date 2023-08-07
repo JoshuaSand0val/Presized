@@ -4,6 +4,10 @@
 @use "sass:math" as math;
 @use "../variables/defaults" as *;
 
+// ----------------------------------- //
+// Build Scoped Breakpoint Containers: //
+// ----------------------------------- //
+
 $_previous-key: null;
 @each $key, $ratio in $ratios {
 	// Get min and max $breakpoints:
@@ -43,4 +47,14 @@ $_previous-key: null;
 
 	// Update $_previous-key variable:
 	$_previous-key: $key;
+}
+
+// ------------------------------------- //
+// Limit Width of Breakpoint Containers: //
+// ------------------------------------- //
+
+@each $name, $width in $breakpoints {
+	%breakpoint-#{$name} {
+		max-width: $width;
+	}
 }
