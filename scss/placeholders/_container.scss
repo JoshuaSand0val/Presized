@@ -1,0 +1,43 @@
+// Container: Placeholder container classes with custom scaling properties.
+
+@use "sass:map" as map;
+@use "sass:math" as math;
+@use "../variables/defaults" as *;
+
+$_previous-key: null;
+@each $key, $ratio in $ratios {
+	// Get min and max $breakpoints:
+	$min-breakpoint: map.get($breakpoints, $_previous-key) or 0rem;
+	$max-breakpoint: map.get($breakpoints, $key);
+
+	// Get min and max $ratios:
+	$min-ratio: map.get($ratios, $_previous-key) or 1;
+	$max-ratio: map.get($ratios, $key);
+
+	// Create a scoped sizing container:
+	@at-root :root, %container-#{$key} {
+		@media (min-width: $min-breakpoint) {
+			// Generate Custom Properties:
+			@each $property, $number in $sizes {
+				// Calculate $start and $end values:
+				$start: math.pow($min-ratio, $number) * 1rem;
+				$end: math.pow($max-ratio, $number) * 1rem;
+
+				// Calculate $preferred sizes using linear interpolation:
+				$slope: math.div($end - $start, $max-breakpoint - $min-breakpoint);
+				$base: $start - $slope * $min-breakpoint;
+				$preferred: calc($base + (100vw * $slope));
+				
+				// Include responsive custom $property value:
+				#{--#{$property}}: clamp(8px, $preferred, math.max($start, $end));
+			}
+		}
+		// Extend the previous container:
+		@if $_previous-key {
+			@extend %container-#{$_previous-key};
+		}
+	}
+
+	// Update $_previous-key variable:
+	$_previous-key: $key;
+}
