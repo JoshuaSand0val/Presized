@@ -1,4 +1,4 @@
-// Container: Placeholder container classes with custom scaling properties.
+// Breakpoint: Placeholder classes with custom scaling properties.
 
 @use "sass:map" as map;
 @use "sass:math" as math;
@@ -14,8 +14,8 @@ $_previous-key: null;
 	$min-ratio: map.get($ratios, $_previous-key) or 1;
 	$max-ratio: map.get($ratios, $key);
 
-	// Create a scoped sizing container:
-	@at-root :root, %container-#{$key} {
+	// Create a breakpoint scoped sizing container:
+	@at-root :root, %breakpoint-#{$key} {
 		@media (min-width: $min-breakpoint) {
 			// Generate Custom Properties:
 			@each $property, $number in $sizes {
@@ -35,9 +35,9 @@ $_previous-key: null;
 				);
 			}
 		}
-		// Extend the previous container:
+		// Extend the previous breakpoint container:
 		@if $_previous-key {
-			@extend %container-#{$_previous-key};
+			@extend %breakpoint-#{$_previous-key};
 		}
 	}
 
