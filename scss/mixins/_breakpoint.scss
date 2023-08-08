@@ -1,22 +1,15 @@
-// Breakpoint: Encapsulates content inside scoped breakpoint container.
+// Breakpoint: Encapsulates content inside breakpoint container query.
 
 @use "sass:map" as map;
 @use "../variables/defaults" as *;
 
 @mixin breakpoint($name) {
-	$width: map.get($breakpoints, $name);
-	@if $width {
-		@at-root %breakpoint-#{$name} #{&} {
-			@media (min-width: $width) {
-				@content;
-			}
-		}
-		@each $extender, $min-width in $breakpoints {
-			@at-root %breakpoint-#{$extender} {
-				@if $min-width >= $width {
-					@extend %breakpoint-#{$name};
-				}
-			}
-		}
+	// Return error when breakpoint does not exist:
+	@if not map.has-key($breakpoints, $name) {
+		@error "Breakpoint #{$name} does not exist.";
+	}
+	// Include breakpoint container:
+	@container (min-width: #{map.get($breakpoints, $name)}) {
+		@content;
 	}
 }
