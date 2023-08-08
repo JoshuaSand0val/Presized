@@ -1,0 +1,41 @@
+// Root Size: Sets the container root "rem" size using linear interpolation.
+
+@use "sass:map" as map;
+@use "sass:math" as math;
+@use "../variables/defaults" as *;
+
+@mixin root-size($number, $max-width: $breakpoint-xxl) {
+	$previous-key: null;
+	@each $key, $ratio in $ratios {
+		// Get min and max $breakpoints:
+		$min-breakpoint: map.get($breakpoints, $previous-key) or 0rem;
+		$max-breakpoint: map.get($breakpoints, $key);
+
+		// Get min and max $ratios:
+		$min-ratio: map.get($ratios, $previous-key) or 1;
+		$max-ratio: map.get($ratios, $key);
+	
+		// Include root size values that are within $max-width:
+		@if $max-breakpoint <= $max-width {
+			@media (min-width: $min-breakpoint) {
+				// Calculate $start and $end values:
+				$start: math.pow($min-ratio, $number) * 1rem;
+				$end: math.pow($max-ratio, $number) * 1rem;
+		
+				// Calculate $preferred sizes using linear interpolation:
+				$slope: math.div($end - $start, $max-breakpoint - $min-breakpoint);
+				$base: $start - $slope * $min-breakpoint;
+				$preferred: calc($base + (100vw * $slope));
+
+				// Include responsive font-size value:
+				font-size: if($end > $start,
+					max(8px, min($preferred, $end)),
+					max(8px, $preferred, $end)
+				);
+			}
+		}
+
+		// Update $previous-key variable:
+		$previous-key: $key;
+	}
+}
