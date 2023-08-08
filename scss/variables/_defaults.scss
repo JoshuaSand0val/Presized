@@ -34,18 +34,6 @@ $ratios: (
 	"xxl": $ratio-xxl
 );
 
-// Modular Scale Sizes:
-$sizes: (
-	"xx-small": -3,
-	"x-small": -2,
-	"small": -1,
-	"medium": 0,
-	"large": 1,
-	"x-large": 2,
-	"xx-large": 3,
-	"xxx-large": 4
-) !default;
-
 // Safe Areas:
 $safe-top: env(safe-area-inset-top) !default;
 $safe-right: env(safe-area-inset-right) !default;
