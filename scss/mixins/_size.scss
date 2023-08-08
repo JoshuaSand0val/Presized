@@ -2,6 +2,7 @@
 
 @use "sass:map" as map;
 @use "sass:math" as math;
+@use "../functions/range" as *;
 @use "../variables/defaults" as *;
 
 @mixin size($number) {
@@ -14,22 +15,14 @@
 		// Get min and max $ratios:
 		$min-ratio: map.get($ratios, $previous-key) or 1;
 		$max-ratio: map.get($ratios, $key);
+
+		// Calculate $start and $end values:
+		$start: math.pow($min-ratio, $number) * 1rem;
+		$end: math.pow($max-ratio, $number) * 1rem;
 	
+		// Include responsive font-size value:
 		@container (min-width: #{$min-breakpoint}) {
-			// Calculate $start and $end values:
-			$start: math.pow($min-ratio, $number) * 1rem;
-			$end: math.pow($max-ratio, $number) * 1rem;
-
-			// Calculate $preferred size using linear interpolation:
-			$slope: math.div($end - $start, $max-breakpoint - $min-breakpoint);
-			$base: $start - $slope * $min-breakpoint;
-			$preferred: calc($base + (100cqw * $slope));
-
-			// Include responsive font-size value:
-			font-size: if($end > $start,
-				max(8px, min($preferred, $end)),
-				max(8px, $preferred, $end)
-			);
+			font-size: range($start, $min-breakpoint, $end, $max-breakpoint);
 		}
 
 		// Update $previous-key variable:
