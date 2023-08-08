@@ -1,0 +1,16 @@
+// Range: Linearly interpolate values across a container width range.
+
+@use "sass:math" as math;
+
+@function range($start, $min, $end, $max) {
+	// Calculate $preferred size using linear interpolation:
+	$slope: math.div($end - $start, $max - $min);
+	$base: $start - $slope * $min;
+	$preferred: calc($base + (100cqw * $slope));
+
+	// Return responsive range value:
+	@return if($end > $start,
+		min($preferred, $end),
+		max($preferred, $end)
+	);
+}
