@@ -19,8 +19,8 @@
 			// Calculate $start and $end values:
 			$start: math.pow($min-ratio, $number) * 1rem;
 			$end: math.pow($max-ratio, $number) * 1rem;
-	
-			// Calculate $preferred sizes using linear interpolation:
+
+			// Calculate $preferred size using linear interpolation:
 			$slope: math.div($end - $start, $max-breakpoint - $min-breakpoint);
 			$base: $start - $slope * $min-breakpoint;
 			$preferred: calc($base + (100cqw * $slope));
