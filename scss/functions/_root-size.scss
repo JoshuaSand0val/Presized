@@ -1,19 +1,8 @@
-// Root Size: Absolute responsive "rem" unit value using min and max ratios.
+// Root Size: Absolute "rem" unit value using medium ratio.
 
 @use "sass:math" as math;
 @use "../variables/defaults" as *;
 
 @function root-size($number) {
-	// Calculate $start and $end values:
-	$start: math.pow($min-ratio, $number) * 1rem;
-	$end: math.pow($max-ratio, $number) * 1rem;
-
-	// Calculate $difference value:
-	$difference: $end - $start;
-
-	// Calculate $modifier value:
-	$modifier: math.div(100cqw, math.div($breakpoint-xxx-large, $difference));
-
-	// Return responsive font-size range:
-	@return clamp(8px, $start + $modifier, math.max($start, $end));
+	@return 1rem * math.pow($ratio-md, $number);
 }
