@@ -1,17 +1,13 @@
-// Size: Sets a responsive size using linear interpolation.
+// Modular Scale: Includes a responsive modular-scale size.
 
 @use "sass:map" as map;
 @use "sass:math" as math;
-@use "../functions/range" as *;
 @use "../variables/defaults" as *;
+@use "responsive" as *;
 
-@mixin size($number) {
+@mixin modular-scale($number) {
 	$previous-key: null;
 	@each $key, $ratio in $ratios {
-		// Get min and max $breakpoints:
-		$min-breakpoint: map.get($breakpoints, $previous-key) or 0rem;
-		$max-breakpoint: map.get($breakpoints, $key);
-
 		// Get min and max $ratios:
 		$min-ratio: map.get($ratios, $previous-key) or 1;
 		$max-ratio: map.get($ratios, $key);
@@ -19,10 +15,14 @@
 		// Calculate $start and $end values:
 		$start: math.pow($min-ratio, $number) * 1rem;
 		$end: math.pow($max-ratio, $number) * 1rem;
-	
-		// Include responsive font-size value:
-		@container (min-width: #{$min-breakpoint}) {
-			font-size: range($start, $min-breakpoint, $end, $max-breakpoint);
+
+		// Get min and max $breakpoints widths:
+		$min-width: map.get($breakpoints, $previous-key) or 0rem;
+		$max-width: map.get($breakpoints, $key);
+
+		// Include responsive size value:
+		@include responsive($start, $min-width, $end, $max-width) using ($size) {
+			@content($size);
 		}
 
 		// Update $previous-key variable:
