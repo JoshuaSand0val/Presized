@@ -1,0 +1,7 @@
+// Viewport: Encapsulates content inside breakpoint media query.
+
+@mixin viewport($width) {
+	@media (min-width: $width) {
+		@content;
+	}
+}
