@@ -1,7 +1,6 @@
 // Container: Declares a container query context.
 
-@mixin container($name: null, $max-width: null) {
-	container-name: $name;
+@mixin container($max-width: null) {
 	container-type: inline-size;
 	max-width: $max-width;
 }
