@@ -1,0 +1,9 @@
+// Font Size: Shorthand for declaring font-size using modular-scale.
+
+@use "modular-scale" as *;
+
+@mixin font-size($size) {
+	@include modular-scale($size) using ($value) {
+		font-size: $value;
+	}
+}
