@@ -4,6 +4,6 @@
 
 @mixin font-size($size) {
 	@include modular-scale($size) using ($value) {
-		font-size: $value;
+		font-size: max(10px, $value);
 	}
 }
