@@ -1,0 +1,18 @@
+// Responsive: Linearly interpolate values across container widths.
+
+@use "sass:math" as math;
+
+@mixin responsive($start, $min-width, $end, $max-width) {
+	// Calculate $preferred size using linear interpolation:
+	$slope: math.div($end - $start, $max-width - $min-width);
+	$base: $start - $slope * $min-width;
+	$preferred: calc($base + (100cqw * $slope));
+
+	// Include responsive value:
+	@container (min-width: #{$min-width}) {
+		@content(if($end > $start,
+			min($preferred, $end),
+			max($preferred, $end)
+		));
+	}
+}
