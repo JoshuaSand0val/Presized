@@ -5,7 +5,7 @@
 @use "../variables/defaults" as *;
 @use "responsive" as *;
 
-@mixin modular-scale($number) {
+@mixin modular-scale($number, $properties...) {
 	$previous-key: null;
 	@each $key, $ratio in $ratios {
 		// Get min and max $ratios:
@@ -22,6 +22,9 @@
 
 		// Include responsive size value:
 		@include responsive($start, $min-width, $end, $max-width) using ($size) {
+			@each $property in $properties {
+				#{$property}: $size;
+			}
 			@content($size);
 		}
 
