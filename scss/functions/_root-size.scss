@@ -1,8 +1,0 @@
-// Root Size: Absolute "rem" unit value using ratio.
-
-@use "sass:math" as math;
-@use "../variables/defaults" as *;
-
-@function root-size($number, $ratio: $ratio-md) {
-	@return 1rem * math.pow($ratio, $number);
-}
