@@ -3,6 +3,6 @@
 @use "sass:math" as math;
 @use "../variables/defaults" as *;
 
-@function size($number, $ratio: $ratio-md) {
+@function size($number) {
 	@return 1em * math.pow($ratio, $number);
 }

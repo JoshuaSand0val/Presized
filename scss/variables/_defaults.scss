@@ -34,6 +34,9 @@ $ratios: (
 	"xxl": $ratio-xxl
 );
 
+// Relative Size Ratio:
+$ratio: 1.250 !default;
+
 // Safe Areas:
 $safe-top: env(safe-area-inset-top) !default;
 $safe-right: env(safe-area-inset-right) !default;
