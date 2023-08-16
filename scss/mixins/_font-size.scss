@@ -10,7 +10,7 @@
 	@include modular-scale($size) using ($value) {
 		// Limit minimum $size to 10px for legibility:
 		$size: max(10px, $value);
-		// Include $property set to $size:
+		// Include $properties set to $size:
 		@each $property in $properties {
 			#{$property}: $size;
 		}
