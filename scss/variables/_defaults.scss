@@ -17,6 +17,9 @@ $breakpoints: (
 	"xxl": $xxl
 );
 
+// Relative Size Ratio:
+$ratio: 1.250 !default;
+
 // Modular Scale Ratios:
 $ratio-xs: 1.125 !default;
 $ratio-sm: 1.200 !default;
@@ -34,9 +37,6 @@ $ratios: (
 	"xxl": $ratio-xxl
 );
 
-// Relative Size Ratio:
-$ratio: 1.250 !default;
-
 // Safe Areas:
 $safe-top: env(safe-area-inset-top) !default;
 $safe-right: env(safe-area-inset-right) !default;
@@ -48,5 +48,5 @@ $safe-x: 0 $safe-right 0 $safe-left;
 $safe-y: $safe-top 0 $safe-bottom 0;
 
 $safe-header: $safe-top $safe-right 0 $safe-left;
-$safe-content: $safe-x;
+$safe-main: $safe-x;
 $safe-footer: 0 $safe-right $safe-bottom $safe-left;
