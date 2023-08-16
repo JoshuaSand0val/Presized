@@ -7,7 +7,8 @@
 
 @mixin modular-scale($number, $properties...) {
 	$previous-key: null;
-	@each $key in map.keys($breakpoints) {
+	$keys: if($number == 0, "xs", map.keys($breakpoints));
+	@each $key in $keys {
 		// Get min and max $ratios:
 		$min-ratio: map.get($ratios, $previous-key) or 1;
 		$max-ratio: map.get($ratios, $key);
