@@ -1,9 +1,20 @@
-// Font Size: Shorthand for declaring font-size using modular-scale.
+// Font Size: Property font-size declared using modular-scale.
 
+@use "sass:list" as list;
 @use "modular-scale" as *;
 
-@mixin font-size($size) {
+@mixin font-size($size, $property: font-size, $properties...) {
+	// Join $property and $properties together into one list:
+	$properties: list.join($property, $properties);
+	// Include modular scale for given $size:
 	@include modular-scale($size) using ($value) {
-		font-size: max(10px, $value);
+		// Limit minimum $size to 10px for legibility:
+		$size: max(10px, $value);
+		// Include $property set to $size:
+		@each $property in $properties {
+			#{$property}: $size;
+		}
+		// Include @content set to $size:
+		@content($size);
 	}
 }
