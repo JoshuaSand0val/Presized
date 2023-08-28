@@ -1,7 +1,9 @@
-// Breakpoint: Encapsulates content inside breakpoint container query.
+// Breakpoint: Includes content inside breakpoint container query.
+
+@use "../variables/private" as *;
 
 @mixin breakpoint($width) {
-	@container (min-width: #{$width}) {
+	@container #{$container} (min-width: #{$width}) {
 		@content;
 	}
 }

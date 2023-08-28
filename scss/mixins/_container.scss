@@ -1,6 +1,16 @@
 // Container: Declares a container query context.
 
-@mixin container($max-width: null) {
-	container-type: inline-size;
-	max-width: $max-width;
+@use "sass:meta" as meta;
+@use "../variables/private" as *;
+
+@mixin container($name: null) {
+	@if not meta.content-exists() {
+		container-name: $name;
+		container-type: inline-size;
+	}
+	@else {
+		$container: $name !global;
+		@content;
+		$container: null !global;
+	}
 }
