@@ -1,13 +1,14 @@
 // Responsive: Linearly interpolate values across container widths.
 
 @use "sass:math" as math;
+@use "../variables/private" as *;
 @use "breakpoint" as *;
 
 @mixin responsive($start, $min-width, $end, $max-width) {
 	// Calculate $preferred size using linear interpolation:
 	$slope: math.div($end - $start, $max-width - $min-width);
 	$base: $start - $slope * $min-width;
-	$preferred: calc($base + (100cqw * $slope));
+	$preferred: calc($base + (if($viewport, 100vw, 100cqw) * $slope));
 
 	// Include responsive value:
 	@include breakpoint($min-width) {

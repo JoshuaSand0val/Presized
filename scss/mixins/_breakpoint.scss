@@ -1,9 +1,16 @@
-// Breakpoint: Includes content inside breakpoint container query.
+// Breakpoint: Includes content inside breakpoint container or media query.
 
 @use "../variables/private" as *;
 
 @mixin breakpoint($width) {
-	@container #{$container} (min-width: #{$width}) {
-		@content;
+	@if not $viewport {
+		@container #{$container} (min-width: #{$width}) {
+			@content;
+		}
+	}
+	@else {
+		@media (min-width: $width) {
+			@content;
+		}	
 	}
 }

@@ -1,7 +1,17 @@
-// Viewport: Encapsulates content inside breakpoint media query.
+// Viewport: Includes content inside a media query context.
 
-@mixin viewport($width) {
-	@media (min-width: $width) {
+@use "../variables/private" as *;
+@use "breakpoint" as *;
+
+@mixin viewport($width: null) {
+	$viewport: true !global;
+	@if $width {
+		@include breakpoint($width) {
+			@content;
+		}
+	}
+	@else {
 		@content;
 	}
+	$viewport: null !global;
 }
